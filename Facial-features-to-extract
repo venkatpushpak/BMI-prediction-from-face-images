@@ -1,8 +1,43 @@
-Following features must be extarcted from faciala images in order to predict the Body Mass Index
+Following features must be extarcted from facial images in order to predict the Body Mass Index
 
-cheek to jaw width (CJWR), 
-width to upper facial height ratio (WHR), 
+
+cheekbone to jaw width (CJWR), 
+			Cheekbone width   = P1 to P15
+			Jaw width 		  = P4 to P12
+			CJWR = |distancce(P1 to p15)| / |distance(P4 to P12)|
+
+
+width to upper facial height ratio (WHR),
+			Cheekbone width   = P1 to P15
+			Upper facial height = P67 to N1	
+
+
+
 perimeter to area ratio (PAR),
+			Perimeter(P1 P4 P8 P12 P15 P1 )/Area(P1 P4 P8 P12 P15 P1 )
+
+
+
 eye size (ES), 
-lower face to face height ratio (FW/FH), 
-and mean of eyebrow height (MEH). 
+		average distance between P28 and P33 minus the distance between P30 and P35 .
+		
+		formula = 1/2(|P28 P33| - |P30 P35|)
+
+
+lower face to face height ratio (LF/FH),
+			Lower face height LFH = dist(P1 to P8)
+			Face Height = |N2 to P8|
+			ration = LFH / FH
+
+
+face width to lower face height ratio (FW/LFH), 
+			Lower face height LFH = dist(P1 to P8)
+			Face width =   |P1to P15|
+			Ration  =  FW / LFH
+
+
+mean of eyebrow height (MEH).
+			distances = distances between P22 to P28 ,N3 to P29 , P30 to P25 , P19 to P35 , N4 to P34 , and P16 to P33
+			1/6 (sum (distances))
+
+
