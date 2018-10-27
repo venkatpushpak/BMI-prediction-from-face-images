@@ -3,8 +3,6 @@ Following features must be extarcted from faciala images in order to predict the
 cheek to jaw width (CJWR), 
 width to upper facial height ratio (WHR), 
 perimeter to area ratio (PAR),
-width to upper facial height ratio (WHR), 
-perimeter to area ratio (PAR), eye size (ES),
 eye size (ES), 
 lower face to face height ratio (FW/FH), 
 and mean of eyebrow height (MEH). 
