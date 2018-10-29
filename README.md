@@ -4,9 +4,10 @@ The human face can be used to extract plenty of information and researches have 
 
 
 
-###Steps to setup the environment
+### Steps to setup the environment
 
 Clone the repository
+
 `git clone [url]`
 
 Create a virtual environment using the following command 
