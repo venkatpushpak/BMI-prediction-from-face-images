@@ -1,0 +1,33 @@
+{% extends "common.html" %}
+{% block body %}
+
+<center>
+    <div >
+         <h4> {{exercise}} - Feedback </h4>
+         <!-- <h4> Feedback </h4> -->
+        <!-- <img style="height: 550px; width:900px" src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg"> -->
+        <img style="height: 550px; width:900px" src="{{ url_for('pose_vid') }}">
+        <!-- <img style="width: 600px; height: 600px;" src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg" >  -->
+
+    <!-- <img src="..." alt="..."> -->
+</div>       
+    </div>
+    <form method="post">
+    	<form>
+            <p></p>
+            <p></p>
+    	
+        <p style="font-size:20px"> {{eval}} </p>
+
+        <p style="font-size:20px"> {{feedback}} </p>
+    </form>
+</center>
+
+{% endblock %}
+
+
+
+<!-- <h1> Prediction value is <span style="color: blue;"> {{output}} </span> </h1> 
+    <a href="/play?song={{detection}}"> Play Song </a>
+    <h2> {{emotions }}</h2>
+    <h3> 0=neutral,  -->

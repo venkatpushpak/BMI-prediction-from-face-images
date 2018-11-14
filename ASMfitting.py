@@ -24,8 +24,8 @@ def ASMfitting(imgin):
     for d in detection:
         shape  = predictor(gray, d)
         shape1 = face_utils.shape_to_np(shape)
-        # (x, y, w, h) = face_utils.rect_to_bb(d)
-        # cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        (x, y, w, h) = face_utils.rect_to_bb(d)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         for (x, y) in shape1:
             cv2.circle(frame, (x, y), 2, (0, 0, 255), -1)
     cv2.imshow("Output", frame)
@@ -35,4 +35,5 @@ def ASMfitting(imgin):
 
 
 
-ASMfitting('testimg.jpeg')
+ASMfitting('./test-images/testimg.jpeg')
+# ASMfitting('./test-images/tstimg1.jpeg')

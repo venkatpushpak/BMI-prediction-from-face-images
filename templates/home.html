@@ -1,0 +1,51 @@
+<!-- 
+ 
+<div class="block1">
+<h1>EKALAIVA</h1>
+  <h2>Personal Fitness Trainer </h2>
+  <p>
+"The limits of my language are the limits of my mind. All I know is what I have words for."
+  </p>
+<img src="http://www.naturalprogramming.com/images/smilingpython.gif">
+</div>
+
+
+
+ -->
+{% extends "common.html" %}
+{% block body %}
+
+<center>
+    <div style="width: 450px; height: 500px; overflow: hidden">
+        <img style="width: 500px; height: 500px;" src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg" > 
+
+    <!-- <img src="..." alt="..."> -->
+</div>       
+    </div>
+    <form method="post">
+    	<form>
+    		<p style="font-size:20px"> Choose an Exercise </p>
+    		<!-- <input type="submit" name="bicep curl" value="bicepcurl"> -->
+        <a href="bicepcurl" class="btn btn-info" role="button">Bicep Curl </a>
+        <a href="frontraise" class="btn btn-info" role="button">Front Raises </a>
+        <a href="shouldershrug" class="btn btn-info" role="button">Shouler Shrug </a>
+        <a href="shoulderpress" class="btn btn-info" role="button">Shoulder Press </a>
+        <!-- 
+        <button type="submit">Front Raises </button>
+        <button type="submit">Shoulder Shrug </button>
+        <button type="submit">Shoulder Press </button> -->
+        
+    </form>
+</center>
+
+{% endblock %}
+
+
+<!-- <div class="container">
+  <h2>Button Tags</h2>
+  <a href="#" class="btn btn-info" role="button">Link Button</a>
+  <button type="button" class="btn btn-info">Button</button>
+  <input type="button" class="btn btn-info" value="Input Button">
+  <input type="submit" class="btn btn-info" value="Submit Button">
+</div>
+ -->
