@@ -1,5 +1,5 @@
-<!-- 
- 
+<!--
+
 <div class="block1">
 <h1>EKALAIVA</h1>
   <h2>Personal Fitness Trainer </h2>
@@ -17,25 +17,29 @@
 
 <center>
     <div style="width: 450px; height: 500px; overflow: hidden">
-        <img style="width: 500px; height: 500px;" src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg" > 
+        <img src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg" style="width: 500px; height: 500px;"  >
 
     <!-- <img src="..." alt="..."> -->
-</div>       
+</div>
     </div>
     <form method="post">
     	<form>
-    		<p style="font-size:20px"> Choose an Exercise </p>
+    		<p style="font-size:20px"> Choose an Method to provide an image </p>
     		<!-- <input type="submit" name="bicep curl" value="bicepcurl"> -->
-        <a href="bicepcurl" class="btn btn-info" role="button">Bicep Curl </a>
-        <a href="frontraise" class="btn btn-info" role="button">Front Raises </a>
-        <a href="shouldershrug" class="btn btn-info" role="button">Shouler Shrug </a>
-        <a href="shoulderpress" class="btn btn-info" role="button">Shoulder Press </a>
-        <!-- 
+        <a href="bicepcurl" class="btn btn-info" role="button">Take a picture</a>
+       <!--<a href="upload" class="btn btn-info" role="button">Upload an image</a>
+
+
         <button type="submit">Front Raises </button>
         <button type="submit">Shoulder Shrug </button>
         <button type="submit">Shoulder Press </button> -->
-        
+
     </form>
+    <h1> OR </h1>
+    <form method=POST enctype=multipart/form-data action="{{ url_for('upload_file') }}">
+    <input type=file name=photo>
+    <input type="submit">
+</form>
 </center>
 
 {% endblock %}

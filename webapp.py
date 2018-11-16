@@ -1,9 +1,11 @@
+from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
 from flask import Flask, flash, redirect, render_template, request, session, abort,Response
 
 app = Flask(__name__, template_folder='./templates')
 import cv2
 import keyboard
 import numpy as np
+
 import time
 import os
 from datetime import datetime
@@ -11,6 +13,10 @@ import pygame
 import pygame.camera
 globcap = cv2.VideoCapture(0)
 globcap.set(cv2.CAP_PROP_FPS, 2)
+photos = UploadSet('photos', IMAGES)
+
+app.config['UPLOADED_PHOTOS_DEST'] = 'images'
+configure_uploads(app, photos)
 #from SimpleCV import Image, Camera
   # Check if camera opened successfully
 if (globcap.isOpened() == False):
@@ -91,9 +97,17 @@ def shoulderpress():
 @app.route("/feedback/<exercise>", methods=['GET','POST'])
 def capture_image(exercise):
           globcap.release()
-          print("in feedback")
+          #print("in feedback")
           #Response(video_recorder(exercise,1),mimetype='multipart/x-mixed-replace; boundary=frame')
           return render_template('home.html')
+
+@app.route('/upload', methods=['POST','GET'])
+def upload_file():
+	if request.method == 'POST' and 'photo' in request.files:
+		filename=photos.save(request.files['photo'])
+	return 	render_template('home.html')
+
+
 
 
 @app.route('/video_rec/<exercise>')
