@@ -14,10 +14,10 @@ import pygame
 import pygame.camera
 globcap = cv2.VideoCapture(0)
 globcap.set(cv2.CAP_PROP_FPS, 2)
-#photos = UploadSet('photos', IMAGES)
+photos = UploadSet('photos', IMAGES)
 
 app.config['UPLOADED_PHOTOS_DEST'] = 'images'
-#configure_uploads(app, photos)
+configure_upxloads(app, photos)
 #from SimpleCV import Image, Camera
   # Check if camera opened successfully
 if (globcap.isOpened() == False):
