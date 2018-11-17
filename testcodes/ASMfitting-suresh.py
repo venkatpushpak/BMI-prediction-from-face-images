@@ -65,6 +65,7 @@ def ASMfitting(imgin):
 
     
     detection = detector(gray, 1)
+    
     for d in detection:
         shape  = predictor(gray, d)
         shape1 = face_utils.shape_to_np(shape)
@@ -82,34 +83,43 @@ def ASMfitting(imgin):
                 else :
                     coords[strkey] = point
 
-        N3 = midpoint(coords['P18'],coords['P20'])
-        N4 = midpoint(coords['P23'],coords['P25'])
-        lefteyemid = midpoint(coords['P37'],coords['P38'])
-        righteyemid = midpoint(coords['P43'],coords['P44'])
-        N1 = midpoint(lefteyemid,righteyemid)
-        coords['Plfteyemid'] = lefteyemid
-        coords['Prghteyemid'] = righteyemid
-        # print('N1 :', N1)
-        coords['N3'] = N3
-        coords['N4'] = N4 
-        coords['N1'] = N1
+    N3 = midpoint(coords['P18'],coords['P20'])
+    N4 = midpoint(coords['P23'],coords['P25'])
+    lefteyemid = midpoint(coords['P37'],coords['P38'])
+    righteyemid = midpoint(coords['P43'],coords['P44'])
+    N1 = midpoint(lefteyemid,righteyemid)
+    coords['Plfteyemid'] = lefteyemid
+    coords['Prghteyemid'] = righteyemid
+    # print('N1 :', N1)
+    coords['N3'] = N3
+    coords['N4'] = N4 
+    coords['N1'] = N1
 
-        N2 = intersectionpt(coords['P36'],coords['N3'],coords['P45'],coords['N4'])
-        print('N2:', N2)
-        coords['N2'] = N2
+    N2 = intersectionpt(coords['P36'],coords['N3'],coords['P45'],coords['N4'])
+    print('N2:', N2)
+    coords['N2'] = N2
 
-        del coords['P37']
-        del coords['P38']
-        del coords['P43']
-        del coords['P44']
+    del coords['P37']
+    del coords['P38']
+    del coords['P43']
+    del coords['P44']
+
+    print(coords)
 
 
-        for key, value in coords.items():
-            print(key ,':', value[0] ,':', value[1], '\n' )
-            if(str(key[0]) == 'P'):
-                cv2.circle(frame, (int(value[0]), int(value[1])), 2, (0, 0, 255), -1)
-            else:
-                cv2.circle(frame, (int(value[0]), int(value[1])), 2, (0, 255, 0), -1)
+
+
+    for key, value in coords.items():
+        # print(key ,':', value[0] ,':', value[1], '\n' )
+        if(str(key[0]) == 'P'):
+            cv2.circle(frame, (int(value[0]), int(value[1])), 2, (0, 0, 255), -1)
+        else:
+            cv2.circle(frame, (int(value[0]), int(value[1])), 2, (0, 255, 0), -1)
+
+
+
+    coords['Image-name'] = str(imgin)
+    data = pd.DataFrame(coords)
 
 
 
@@ -122,6 +132,7 @@ def ASMfitting(imgin):
     # print(data)
     # print(coords)
     cv2.waitKey(0)
+    data.to_csv('data.csv')
         # if cv2.waitKey(1) & 0xFF == ord('q'):
         #         break
 
