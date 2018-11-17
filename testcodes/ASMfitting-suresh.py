@@ -8,12 +8,16 @@ import imutils
 from imutils import face_utils
 import os
 import pandas as pd
+from shapely.geometry import Polygon 
 
 
 
 def midpoint(p1, p2):
     return ((p1[0]+p2[0])/2, (p1[1]+p2[1])/2) 
 
+
+def distance(p1,p2):
+    return math.sqrt( (p2[0] - p1[0])**2 + (p2[1] - p1[1])**2 )
 
 def intersectionpt(p1,p2,p3,p4):
     
@@ -120,6 +124,15 @@ def ASMfitting(imgin):
 
     coords['Image-name'] = str(imgin)
     data = pd.DataFrame(coords)
+    cheekbone_width = distance(coords['P0'],coords['P16'])
+    jaw_width = distance(coords['P4'],coords['P12'])
+    upper_facialheight = distance(coords['P66'],coords['N1'])
+    polygon_perimeter = Polygon(coords['P0'],coords['P4'],coords['P8'],coords['P12'],coords['P16']).length
+    polygon_area = Polygon(coords['P0'],coords['P4'],coords['P8'],coords['P12'],coords['P16']).area
+    avg_eyesize = ((distance(coords['P36'],coords['P45'])) - (distance(coords['P39'],coords['P42'])))/2
+    nw_point = (coords['P0'][0], coords['P8'][1])
+    LFH =  distance(coords['P1'],nw_point)
+    print('cheekbonewidth:', cheekbonewidth)
 
 
 
