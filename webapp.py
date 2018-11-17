@@ -1,5 +1,6 @@
-from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
+
 from flask import Flask, flash, redirect, render_template, request, session, abort,Response
+from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__, template_folder='./templates')
 import cv2
