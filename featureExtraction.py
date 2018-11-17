@@ -22,7 +22,7 @@ data =pd.DataFrame()
 def readImages():
         global images
         #imgs = []
-        path = "../test-images"
+        path = "./test-images"
         valid_images = [".jpg",".gif",".png",".tga",".bmp",".jpeg"]
         for f in os.listdir(path):
             ext = os.path.splitext(f)[1]
@@ -107,7 +107,7 @@ def testprint(p1):
 def ASMfitting(imgin):
     global data
     detector = dlib.get_frontal_face_detector() #Face detector
-    predictor = dlib.shape_predictor('../Data/dlibShapepredictor/shape_predictor_68_face_landmarks.dat') #Landmark identifier
+    predictor = dlib.shape_predictor('./Data/dlibShapepredictor/shape_predictor_68_face_landmarks.dat') #Landmark identifier
     
     frame = cv2.imread(imgin)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
