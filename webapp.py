@@ -1,6 +1,6 @@
 
 from flask import Flask, flash, redirect, render_template, request, session, abort,Response
-#from flask.ext.uploads import UploadSet, configure_uploads, IMAGES
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 app = Flask(__name__, template_folder='./templates')
 import cv2
@@ -101,13 +101,13 @@ def capture_image(exercise):
           #print("in feedback")
           #Response(video_recorder(exercise,1),mimetype='multipart/x-mixed-replace; boundary=frame')
           return render_template('home.html')
-'''
+
 @app.route('/upload', methods=['POST','GET'])
 def upload_file():
 	if request.method == 'POST' and 'photo' in request.files:
 		filename=photos.save(request.files['photo'])
 	return 	render_template('home.html')
-'''
+
 
 
 
@@ -117,10 +117,7 @@ def video_rec(exercise):
 	return Response(video_recorder(exercise),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-@app.route('/pose_vid')
-def pose_vid():
-  return Response(pose_vid_Read(),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
 
 
 if __name__ == "__main__":
