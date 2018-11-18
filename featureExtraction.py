@@ -22,7 +22,7 @@ data =pd.DataFrame()
 def readImages():
         global images
         #imgs = []
-        path = "./test-images"
+        path = "./Release/Data/Images"
         valid_images = [".jpg",".gif",".png",".tga",".bmp",".jpeg"]
         for f in os.listdir(path):
             ext = os.path.splitext(f)[1]
@@ -281,7 +281,7 @@ for i in range(0,len(images)):
    ASMfitting(images[i])
 #ASMfitting(images[0])
 print(data.head(10))
-data.to_csv('data.csv')
+data.to_csv('./Data/features.csv')
 
 endtime = time.time()
 
