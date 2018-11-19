@@ -81,12 +81,12 @@ def bicepcurlrecord():
 
 
 
-@app.route("/feedback/<exercise>", methods=['GET','POST'])
-def capture_image(exercise):
+@app.route("/showBMI", methods=['GET','POST'])
+def capture_image():
           globcap.release()
           #print("in feedback")
           #Response(video_recorder(exercise,1),mimetype='multipart/x-mixed-replace; boundary=frame')
-          return render_template('home.html')
+          return render_template('showBMI.html')
 
 @app.route('/upload', methods=['POST','GET'])
 def upload_file():
@@ -104,9 +104,6 @@ def upload_file():
 def video_rec():
     #os.remove('images/' + "face.jpg")
 	return Response(video_recorder(),mimetype='multipart/x-mixed-replace; boundary=frame')
-
-
-
 
 
 if __name__ == "__main__":
