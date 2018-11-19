@@ -12,6 +12,12 @@ import os
 from datetime import datetime
 import pygame
 import pygame.camera
+import dlib
+import math
+import imutils
+from imutils import face_utils
+
+
 globcap = cv2.VideoCapture(0)
 globcap.set(cv2.CAP_PROP_FPS, 2)
 photos = UploadSet('photos', IMAGES)
@@ -45,10 +51,19 @@ def video_recorder(event=0):
 	#globexercise=exercise
 	record_strttime = time.time()
 	count =0
+	detector = dlib.get_frontal_face_detector() #Face detector
+	predictor = dlib.shape_predictor('./Data/dlibShapepredictor/shape_predictor_68_face_landmarks.dat') #Landmark identifier
+
 
 
 	while(True):
 		ret, frame = globcap.read()
+		gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+		detection = detector(gray, 1)
+		for d in detection:
+			shape  = predictor(gray, d)
+			shape1 = face_utils.shape_to_np(shape)
+			(x, y, w, h) = face_utils.rect_to_bb(d)
 		try:
 			if keyboard.is_pressed('q'):
 					print("you pressed a key")
