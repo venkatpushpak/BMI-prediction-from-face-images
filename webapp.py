@@ -17,7 +17,7 @@ globcap.set(cv2.CAP_PROP_FPS, 2)
 photos = UploadSet('photos', IMAGES)
 
 app.config['UPLOADED_PHOTOS_DEST'] = 'images'
-configure_upxloads(app, photos)
+configure_uploads(app, photos)
 #from SimpleCV import Image, Camera
   # Check if camera opened successfully
 if (globcap.isOpened() == False):
@@ -34,15 +34,15 @@ globexercise='bicepcurl'
 if os.path.exists('images/' + "face.jpg") is True:
 	os.remove('images/' + "face.jpg")
 
-def video_recorder(exercise,event=0):
+def video_recorder(event=0):
 
 	# Create a VideoCapture object
 	#out = cv2.VideoWriter(vid_path,cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
 	#global active
-	print("this is webapp")
+#	print("this is webapp")
 	#out=cv2.VideoWriter(vid_path,cv2.VideoWriter_fourcc('M','J','P','G'),10,(frame_width,frame_height))
 	#out = cv2.VideoWriter(vid_path,cv2.VideoWriter_fourcc('M','J','P','G'),10, (frame_width,frame_height))
-	globexercise=exercise
+	#globexercise=exercise
 	record_strttime = time.time()
 	count =0
 
@@ -74,23 +74,9 @@ def home():
     return render_template('home.html')
 
 
-@app.route("/bicepcurl", methods=['GET','POST'])
+@app.route("/captureimage", methods=['GET','POST'])
 def bicepcurlrecord():
-	return render_template('bicepcurl.html')
-
-@app.route("/frontraise", methods=['GET','POST'])
-def frontraise():
-	return render_template('frontraise.html')
-
-
-@app.route("/shouldershrug", methods=['GET','POST'])
-def shouldershrug():
-	return render_template('shoulder.html')
-
-
-@app.route("/shoulderpress", methods=['GET','POST'])
-def shoulderpress():
-	return render_template('shoulderpress.html')
+	return render_template('captureimage.html')
 
 
 
@@ -106,15 +92,18 @@ def capture_image(exercise):
 def upload_file():
 	if request.method == 'POST' and 'photo' in request.files:
 		filename=photos.save(request.files['photo'])
-	return 	render_template('home.html')
+		imagename="/images/"+request.files['photo'].filename
+        #print(imagename)
+		#print("photo",request.files['photo'].filename)
+	return 	render_template('showBMI.html',result=imagename)
 
 
 
 
-@app.route('/video_rec/<exercise>')
-def video_rec(exercise):
+@app.route('/video_rec')
+def video_rec():
     #os.remove('images/' + "face.jpg")
-	return Response(video_recorder(exercise),mimetype='multipart/x-mixed-replace; boundary=frame')
+	return Response(video_recorder(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 
