@@ -29,6 +29,7 @@ def ASMfitting(imgin):
         for (x, y) in shape1:
             cv2.circle(frame, (x, y), 2, (0, 0, 255), -1)
     cv2.imshow("Output", frame)
+    cv2.imwrite("./test-images/fullyfitted.jpg", frame)
     cv2.waitKey(0)
         # if cv2.waitKey(1) & 0xFF == ord('q'):
         #         break
