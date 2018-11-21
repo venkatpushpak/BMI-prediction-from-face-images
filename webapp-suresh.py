@@ -17,7 +17,7 @@ import math
 import imutils
 from imutils import face_utils
 import ASMfitting as ASM 	
-from Code.utils import BMIPredictor
+from utils import BMIPredictor
 
 globcap = cv2.VideoCapture(0)
 # globcap.set(cv2.CAP_PROP_FPS, 2)
@@ -68,8 +68,9 @@ def facecapture():
 	filepath = './Data/'+ filenm 
 	dispfile = "./static/"+filenm 
 	ret, im = globcap.read()
+	cv2.imwrite(filepath, im)
 	gray=cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
-	features, coords = ASM.ASMfitting(im, gray , dispfile, filepath)
+	features, coords = ASM.ASMfitting(im, gray,dispfile)
 	print(features)
 
 	bmi_predictor = BMIPredictor()
@@ -78,12 +79,12 @@ def facecapture():
 
 	
 
-	# cv2.imwrite(filepath, im)
+	
 
 	# cv2.imwrite(dispfile, im)
 	cv2.destroyAllWindows()
 	globcap.release()
-	return filepath, filenm,dispfile
+	return filepath, filenm,dispfile, VGGbmi
 
 
 
@@ -103,9 +104,9 @@ def captureimage():
 
 @app.route("/showBMI", methods=['GET','POST'])
 def showBMI():
-	filepath, filename,dispfile = facecapture()
+	filepath, filename,dispfile, VGGbmi = facecapture()
 	print (filepath)
-	return render_template('showBMI.html', imgfilenm = filename, result = dispfile)
+	return render_template('showBMI.html', imgfilenm = filename, result = VGGbmi)
 
 @app.route('/upload', methods=['POST','GET'])
 def upload_file():

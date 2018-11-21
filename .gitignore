@@ -1,3 +1,6 @@
 /bmivenv
 /release
 /VGGBMI
+/VGGFace
+svr_parameters
+/caffe-tensorflow

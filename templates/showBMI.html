@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <body>
 <img style="height: 60%; width:60%" src="/static/{{imgfilenm}}">
@@ -8,3 +8,28 @@
 
 </body>
 </html>
+ -->
+
+
+{% extends "common.html" %}
+{% block body %}
+
+<center>
+    <div >
+        <!-- <img src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg" style="width: 500px; height: 500px;"  > -->
+        <!-- <img src="http://www.parkworld-online.com/wp-content/uploads/picsolve-Facial-recognition-630x315.jpg" style="width: 500px; height: 500px;"  > -->
+        <img src="/static/{{imgfilenm}}"   >
+
+
+    <!-- <img src="..." alt="..."> -->
+</div>
+<div>
+    <form method="post">
+    	<form>
+    		<p style="font-size:20px"> Your Body Mass Index  = {{result}} </p>
+    		<!-- <input type="submit" name="bicep curl" value="bicepcurl"> -->
+      
+</div>
+</center>
+
+{% endblock %}

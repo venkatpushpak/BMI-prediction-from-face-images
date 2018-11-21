@@ -82,7 +82,7 @@ def polygonPerimeter(corners):
          
 
 
-def ASMfitting(frame, grayimg,dispfile, filepath):
+def ASMfitting(frame, grayimg,dispfile):
     
     detector = dlib.get_frontal_face_detector() #Face detector
     predictor = dlib.shape_predictor('./Data/dlibShapepredictor/shape_predictor_68_face_landmarks.dat') #Landmark identifier
