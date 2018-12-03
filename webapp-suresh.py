@@ -84,7 +84,7 @@ def facecapture():
 	# cv2.imwrite(dispfile, im)
 	cv2.destroyAllWindows()
 	globcap.release()
-	return filepath, filenm,dispfile, VGGbmi
+	return filepath, filenm,dispfile, VGGbmi , features
 
 
 
@@ -104,9 +104,17 @@ def captureimage():
 
 @app.route("/showBMI", methods=['GET','POST'])
 def showBMI():
-	filepath, filename,dispfile, VGGbmi = facecapture()
+	filepath, filename,dispfile, VGGbmi, features = facecapture()
 	print (filepath)
-	return render_template('showBMI.html', imgfilenm = filename, result = VGGbmi)
+	if(VGGbmi < 18.5):
+		category = "Underweight"
+	elif(VGGbmi >=18.5 and VGGbmi < 25):
+		category = "Normal"
+	elif(VGGbmi >=25 and VGGbmi < 30):
+		category = "Overweight"
+	elif(VGGbmi > 30 ):
+		category = "Obese" 
+	return render_template('showBMI.html', imgfilenm = filename, result = VGGbmi - 2.6, featuresp = features,  category = category)
 
 @app.route('/upload', methods=['POST','GET'])
 def upload_file():

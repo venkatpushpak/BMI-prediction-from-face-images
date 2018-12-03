@@ -3,7 +3,7 @@
 
 <center>
     <div >
-         <h4> Press q to capture the image </h4>
+        
         <img style="height: 550px; width:900px" src="{{ url_for('video_rec') }}">
         <!-- <img style="width: 600px; height: 600px;" src="https://thumbs.dreamstime.com/z/dumbbell-7556873.jpg" >  -->
 
@@ -14,8 +14,11 @@
     	<form>
             <p></p>
             <p></p>
-    	<a href="/showBMI" class="btn btn-info" role="button">Predict BMI </a>
+    	<a href="/showBMI" class="btn btn-info" role="button" onclick="$('#loading').show()">Predict BMI </a>
+
         </form>
+
+        <div id="loading" style="display:none;"><img src="/static/loading.gif" alt="" />Calculating BMI!</div>
 </center>
 
 {% endblock %}

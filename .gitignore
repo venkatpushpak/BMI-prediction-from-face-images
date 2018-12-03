@@ -1,6 +1,6 @@
 /bmivenv
 /release
-/VGGBMI
-/VGGFace
+/VGGFace/*.npy
 svr_parameters
-/caffe-tensorflow
+/Data/*.jpg
+/static/test*
