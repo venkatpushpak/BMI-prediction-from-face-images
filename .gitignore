@@ -1,3 +1,6 @@
 /bmivenv
 /release
-/VGGBMI
+/VGGFace/*.npy
+svr_parameters
+/Data/*.jpg
+/static/test*
